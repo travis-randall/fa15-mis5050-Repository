@@ -25,4 +25,8 @@
    <h2>Advanced Controls</h2>
     <a href="Advanced_Controls/Advanced_Controls.aspx" target="_blank">Advanced Web Form Controls</a>
 
+    <h2>User Controls and Master Pages</h2>
+    <a href="UCMP/FooterHost.aspx" target="_blank">FooterHost.aspx</a>
+    <a href="UCMP/ChangeMaster.aspx" target="_blank">ChangeMaster.aspx</a>
+
 </asp:Content>
