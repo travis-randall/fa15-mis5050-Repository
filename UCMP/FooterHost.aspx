@@ -1,15 +1,15 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="FooterHost.aspx.cs" Inherits="UCMP_FooterHost" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/UCMP/MasterPage.master" AutoEventWireup="true" CodeFile="FooterHost.aspx.cs" Inherits="UCMP_FooterHost" %>
 <%@ Register TagPrefix="uc1" TagName="Footer" Src ="Footer.ascx" %>
 
-<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<asp:Content runat="server" ID="master" ContentPlaceHolderID="cphHead">
+    <link rel="stylesheet" href="~/Styles/style.css" type="text/css">
     <title>Footer Host</title>
-</head>
-<body>
-    <form id="form1" runat="server">
+</asp:Content>
+
+    <asp:Content runat="server" ID="main" ContentPlaceHolderID="cphMain">
     <div>
+        <br />
         <h1>A Page With a Footer</h1><hr />
         Static Page with Text<br /><br />
         <asp:RadioButtonList ID="RadioButtonList1" runat="server" AutoPostBack="true">
@@ -18,6 +18,4 @@
         </asp:RadioButtonList><br />
         <uc1:Footer ID="Footer1" runat="server" />
     </div>
-    </form>
-</body>
-</html>
+</asp:Content>
