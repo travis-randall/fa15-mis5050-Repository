@@ -79,4 +79,12 @@ public partial class Advanced_Controls_Advanced_Controls : System.Web.UI.Page {
             lbl.Text += "<br />Party Time";
         }
     }
+    protected void Ads_AdCreated(Object sender, AdCreatedEventArgs e) {
+        //// Syncronize
+        lnkBanner.NavigateUrl = e.NavigateUrl;
+
+        //// Syncronize the text of the link
+        lnkBanner.Text = "<br />" + e.AlternateText;
+        lnkBanner.Text += "<br />Click here for more Information about this wonderful product <br /><br />";
+    }
 }
