@@ -18,17 +18,18 @@ namespace GreetingCardMaker
 		{
 			if (this.IsPostBack == false)
 			{
+                // Set color options.
+                lstBackColor.Items.Add("White");
+                lstBackColor.Items.Add("Red");
+                lstBackColor.Items.Add("Green");
+                lstBackColor.Items.Add("Blue");
+                lstBackColor.Items.Add("Yellow");
+				
                 // Set font options.
 				lstFontName.Items.Add("Times New Roman");
 				lstFontName.Items.Add("Arial");
 				lstFontName.Items.Add("Verdana");
 				lstFontName.Items.Add("Tahoma");
-
-                PicDrop.Items.Add(new ListItem("Birthday", "birthday.png"));
-                PicDrop.Items.Add(new ListItem("Christmas", "christmas.png"));
-                PicDrop.Items.Add(new ListItem("Get Well", "get_well.gif"));
-                PicDrop.Items.Add(new ListItem("Graduation", "graduation.jpg"));
-                PicDrop.Items.Add(new ListItem("Valentine","velentine.jpg"));
 
                 // Set border style options by adding a series of
                 // ListItem objects.
@@ -61,74 +62,47 @@ namespace GreetingCardMaker
 				// Select the first border option.
 				lstBorder.SelectedIndex = 0;
 
-                // Set the picture.
-                // imgDefault.ImageUrl = "birthday.png";
-            }
+				// Set the picture.
+				imgDefault.ImageUrl = "birthday.png";
+			}
 		}
-
-        private void UpdateCard() {
-            // Update the color.
-            pnlCard.BackColor = Color.FromName(lstBackColor.SelectedItem.Text);
-
-            // Update the font.
-            lblGreeting.Font.Name = lstFontName.SelectedItem.Text;
-
-            try {
-                if (Int32.Parse(txtFontSize.Text) > 0) {
-                    lblGreeting.Font.Size =
-                        FontUnit.Point(Int32.Parse(txtFontSize.Text));
-                    lblSenderName.Font.Size =
-                        FontUnit.Point(Int32.Parse(txtFontSize.Text));
-                }
-            }
-            catch {
-                // Use error handling to ignore invalid value.
-            }
-
-            // Update the border style.
-            pnlCard.BorderStyle = (BorderStyle)Int32.Parse(lstBorder.SelectedItem.Value);
-
-            // Update the picture.
-            if (chkPicture.Checked == true) {
-                foreach (ListItem li in PicDrop.Items) {
-                    if (li.Selected) {
-                        System.Web.UI.WebControls.Image img = new System.Web.UI.WebControls.Image();
-                        img.ImageUrl = li.Value;
-                        pnlCard.Controls.Add(img);
-                    }
-                }
-                imgDefault.Visible = true;
-            }
-            else {
-                imgDefault.Visible = false;
-            }
-
-            // Set the text.
-            lblGreeting.Text = txtGreeting.Text;
-
-            if (senderName.Text != "") {
-                lblSenderName.Text = "From: " + senderName.Text;
-            }
-            else {
-                lblSenderName.Text = "";
-            }
-        }
-
-        protected void ControlChanged(object sender, System.EventArgs e) {
-            UpdateCard();
-        }
 
 		protected void cmdUpdate_Click(object sender, System.EventArgs e)
 		{
-            UpdateCard();
+			// Update the color.
+			pnlCard.BackColor = Color.FromName(lstBackColor.SelectedItem.Text);
+
+			// Update the font.
+			lblGreeting.Font.Name = lstFontName.SelectedItem.Text;
+
+			try
+			{
+				if (Int32.Parse(txtFontSize.Text) > 0)
+				{
+					lblGreeting.Font.Size =
+						FontUnit.Point(Int32.Parse(txtFontSize.Text));
+				}
+			}
+			catch
+			{
+				// Use error handling to ignore invalid value.
+			}
+
+			// Update the border style.
+			pnlCard.BorderStyle = (BorderStyle)Int32.Parse(lstBorder.SelectedItem.Value);
+
+			// Update the picture.
+			if (chkPicture.Checked == true)
+			{
+				imgDefault.Visible = true;
+			}
+			else
+			{
+				imgDefault.Visible = false;
+			}
+
+			// Set the text.
+			lblGreeting.Text = txtGreeting.Text;
 		}
-        protected void showPicDrop(object sender, EventArgs e) {
-            if (chkPicture.Checked) {
-                PicDrop.Visible = true;
-            } else {
-                PicDrop.Visible = false;
-            }
-            UpdateCard();
-        }
-    }
+	}
 }
